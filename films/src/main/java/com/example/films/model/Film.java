@@ -1,14 +1,14 @@
 package com.example.films.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -34,4 +34,8 @@ public class Film {
 
     @JsonProperty("Poster")
     private String posterUrl;
+
+    @Column(name = "is_favorite")
+    private boolean favorite;
+
 }

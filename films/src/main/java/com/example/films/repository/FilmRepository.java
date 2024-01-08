@@ -9,4 +9,5 @@ public interface FilmRepository extends CrudRepository<Film, Long> {
 
     List<Film> findAll();
 
+    List<Film> findByFavoriteTrue();
 }

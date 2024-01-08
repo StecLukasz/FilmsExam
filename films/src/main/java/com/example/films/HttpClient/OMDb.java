@@ -39,10 +39,8 @@ public class OMDb {
             films.addAll(Arrays.asList(omdbResponse.getSearch()));
             repository.saveAll(films);
         }
-
         return films;
     }
-
 
     public Film getFilmDetails(String imdbId) {
         RestTemplate restTemplate = new RestTemplate();
@@ -61,5 +59,3 @@ public class OMDb {
         return null;
     }
 }
-
-//TODO: dodac search parameter do wyszukiwania filmu po tytule albo po części a później dodać możliwość dodawania tego tutułu do ulubionych

@@ -5,11 +5,11 @@ import com.example.films.model.Film;
 import com.example.films.repository.FilmRepository;
 import com.example.films.service.FilmService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
 @RestController
@@ -31,9 +31,18 @@ public class FilmController {
 
     @GetMapping("/search")
     public List<Film> getDetails(@RequestParam String title,
-                                  @RequestParam(defaultValue = "1") int page,
-                                  @RequestParam(defaultValue = "10") int pageSize) throws Exception {
+                                 @RequestParam(defaultValue = "1") int page,
+                                 @RequestParam(defaultValue = "10") int pageSize) throws Exception {
         return service.getDetailsForFilms(title, page, pageSize);
     }
 
+//    @PostMapping("/favorite/{filmId}")
+//    public ResponseEntity<String> addToFavorites(@PathVariable String filmId) {
+//    return service.addToFavorites(filmId);
+//    }
+
+    @GetMapping("/favorites")
+    public List<Film> getFavoriteFilms() {
+        return service.getFavoriteFilms();
+    }
 }
